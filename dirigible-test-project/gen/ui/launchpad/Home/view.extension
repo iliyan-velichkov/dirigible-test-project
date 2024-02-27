@@ -1,0 +1,5 @@
+{
+    "module": "dirigible-test-project/gen/ui/launchpad/Home/view.js",
+    "extensionPoint": "dirigible-test-project-view",
+    "description": "dirigible-test-project - Application View"
+}

@@ -68,7 +68,7 @@
                 "dataQuery": "",
                 "disableGeneration": "false",
                 "icon": "/services/web/resources/unicons/file.svg",
-                "layoutType": "MANAGE",
+                "layoutType": "MANAGE_MASTER",
                 "menuIndex": "100",
                 "menuKey": "book",
                 "menuLabel": "Book",
@@ -76,7 +76,7 @@
                 "navigationPath": "/Home",
                 "perspectiveIcon": "/services/web/resources/unicons/book-open.svg",
                 "perspectiveName": "Books",
-                "perspectiveOrder": "1",
+                "perspectiveOrder": "100",
                 "title": "Book",
                 "tooltip": "Book",
                 "type": "PRIMARY"
@@ -87,7 +87,7 @@
                 "name": "Books",
                 "label": "Books",
                 "icon": "/services/web/resources/unicons/book-open.svg",
-                "order": "1"
+                "order": "100"
             }
         ],
         "navigations": []

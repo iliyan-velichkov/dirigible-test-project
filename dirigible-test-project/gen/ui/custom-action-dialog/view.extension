@@ -1,0 +1,5 @@
+{
+    "module": "dirigible-test-project/gen/ui/custom-action-dialog/view.js",
+    "extensionPoint": "dirigible-test-project-dialog-window",
+    "description": "dirigible-test-project - Custom Action Dialog Window"
+}

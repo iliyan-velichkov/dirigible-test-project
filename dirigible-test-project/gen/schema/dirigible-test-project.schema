@@ -1,0 +1,35 @@
+{
+    "schema": {
+        "structures": [
+            {
+                "name": "BOOK",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "nullable": true,
+                        "name": "BOOK_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 40,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "name": "BOOK_TITLE"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 40,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "name": "BOOK_PUBLISHER"
+                    }
+                ]
+            }
+        ]
+    },
+    "datasource": "DefaultDB"
+}
