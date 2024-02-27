@@ -1,0 +1,36 @@
+{
+   "constraints": [
+      {
+         "scope": "HTTP",
+         "path": "/dirigible-test-project/content/file1.txt",
+         "method": "*",
+         "roles": [
+            "testRole1"
+         ]
+      },
+      {
+         "scope": "HTTP",
+         "path": "/web/dirigible-test-project/content/file1.txt",
+         "method": "*",
+         "roles": [
+            "testRole1"
+         ]
+      },
+      {
+         "scope": "HTTP",
+         "path": "/services/web/dirigible-test-project/content/file1.txt",
+         "method": "*",
+         "roles": [
+            "testRole1"
+         ]
+      },
+      {
+         "scope": "HTTP",
+         "path": "/dirigible-test-project/content/file2.txt",
+         "method": "GET",
+         "roles": [
+            "testRole2"
+         ]
+      }
+   ]
+}

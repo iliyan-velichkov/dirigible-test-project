@@ -1,0 +1,18 @@
+[
+   {
+      "name": "testRole1",
+      "description": "Test role 1 Description"
+   },
+   {
+      "name": "testRole2",
+      "description": "Test role 2 Description"
+   },
+   {
+      "name": "testRole3",
+      "description": "Test role 3 Description"
+   },
+   {
+      "name": "testRole4",
+      "description": "Test role 4 Description"
+   }
+]
