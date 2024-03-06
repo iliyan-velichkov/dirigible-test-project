@@ -26,8 +26,48 @@
                         "precision": "NaN",
                         "scale": "NaN",
                         "name": "BOOK_PUBLISHER"
+                    },
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "BOOK_STATUS"
                     }
                 ]
+            },
+            {
+                "name": "BOOKSTATUS",
+                "type": "TABLE",
+                "columns": [
+                    {
+                        "type": "INTEGER",
+                        "length": 0,
+                        "primaryKey": true,
+                        "identity": true,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "nullable": true,
+                        "name": "BOOKSTATUS_ID"
+                    },
+                    {
+                        "type": "VARCHAR",
+                        "length": 20,
+                        "precision": "NaN",
+                        "scale": "NaN",
+                        "name": "BOOKSTATUS_NAME"
+                    }
+                ]
+            },
+            {
+                "name": "Book_BookStatus",
+                "type": "foreignKey",
+                "table": "BOOK",
+                "constraintName": "Book_BookStatus",
+                "columns": "BOOK_STATUS",
+                "referencedTable": "BOOKSTATUS",
+                "referencedColumns": "BOOKSTATUS_ID"
             }
         ]
     },
