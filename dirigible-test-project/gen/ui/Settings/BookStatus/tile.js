@@ -12,6 +12,6 @@ exports.getTile = function () {
         // icon: "file-o",
         location: "/services/web/dirigible-test-project/gen/ui/Settings/index.html",
         order: "100",
-        groupOrder: "200"
+        groupOrder: "200",
     };
 };

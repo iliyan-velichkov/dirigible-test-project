@@ -102,6 +102,7 @@
                 "perspectiveIcon": "/services/web/resources/unicons/book-open.svg",
                 "perspectiveName": "Books",
                 "perspectiveOrder": "100",
+                "perspectiveRole": "",
                 "title": "Book",
                 "tooltip": "Book",
                 "type": "PRIMARY"
@@ -164,6 +165,7 @@
                 "perspectiveIcon": "/services/web/resources/unicons/setting.svg",
                 "perspectiveName": "Settings",
                 "perspectiveOrder": "200",
+                "perspectiveRole": "",
                 "title": "BookStatus",
                 "tooltip": "BookStatus",
                 "type": "SETTING"
@@ -174,13 +176,15 @@
                 "name": "Books",
                 "label": "Books",
                 "icon": "/services/web/resources/unicons/book-open.svg",
-                "order": "100"
+                "order": "100",
+                "role": {}
             },
             {
                 "name": "Settings",
                 "label": "Settings",
                 "icon": "/services/web/resources/unicons/setting.svg",
-                "order": "200"
+                "order": "200",
+                "role": {}
             }
         ],
         "navigations": []

@@ -7,7 +7,7 @@ const viewData = {
     id: "BookStatus-filter",
     label: "BookStatus Filter",
     link: "/services/web/dirigible-test-project/gen/ui/Settings/BookStatus/dialog-filter/index.html",
-    perspectiveName: "Settings"
+    perspectiveName: "Settings",
 };
 
 if (typeof exports !== 'undefined') {

@@ -1,6 +1,7 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
 import { Extensions } from "sdk/extensions"
 import { BookRepository, BookEntityOptions } from "../../dao/Books/BookRepository";
+import { ValidationError } from "../utils/ValidationError";
 import { HttpUtils } from "../utils/HttpUtils";
 
 const validationModules = await Extensions.loadExtensionModules("dirigible-test-project-Books-Book", ["validate"]);
@@ -70,7 +71,7 @@ class BookService {
             const id = parseInt(ctx.pathParameters.id);
             const entity = this.repository.findById(id);
             if (entity) {
-                return entity
+                return entity;
             } else {
                 HttpUtils.sendResponseNotFound("Book not found");
             }
@@ -121,17 +122,18 @@ class BookService {
         if (entity.Title === null || entity.Title === undefined) {
             throw new ValidationError(`The 'Title' property is required, provide a valid value`);
         }
-        if (entity.Title.length > 40) {
+        if (entity.Title?.length > 40) {
             throw new ValidationError(`The 'Title' exceeds the maximum length of [40] characters`);
         }
         if (entity.Publisher === null || entity.Publisher === undefined) {
             throw new ValidationError(`The 'Publisher' property is required, provide a valid value`);
         }
-        if (entity.Publisher.length > 40) {
+        if (entity.Publisher?.length > 40) {
             throw new ValidationError(`The 'Publisher' exceeds the maximum length of [40] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);
         }
     }
+
 }

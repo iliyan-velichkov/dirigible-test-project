@@ -9,7 +9,7 @@ const viewData = {
     factory: "frame",
     region: "center",
     link: "/services/web/dirigible-test-project/gen/ui/Settings/BookStatus/index.html",
-    perspectiveName: "Settings"
+    perspectiveName: "Settings",
 };
 
 if (typeof exports !== 'undefined') {

@@ -35,7 +35,8 @@
       "name": "Books",
       "label": "Books",
       "order": "100",
-      "icon": "/services/web/resources/unicons/book-open.svg"
+      "icon": "/services/web/resources/unicons/book-open.svg",
+      "role": ""
     },
     "Settings": {
       "views": [
@@ -44,7 +45,8 @@
       "name": "Settings",
       "label": "Settings",
       "order": "200",
-      "icon": "/services/web/resources/unicons/setting.svg"
+      "icon": "/services/web/resources/unicons/setting.svg",
+      "role": ""
     }
   },
   "models": [
@@ -177,6 +179,7 @@
       "perspectiveIcon": "/services/web/resources/unicons/book-open.svg",
       "perspectiveName": "Books",
       "perspectiveOrder": "100",
+      "perspectiveRole": "",
       "title": "Book",
       "tooltip": "Book",
       "type": "PRIMARY",
@@ -350,6 +353,7 @@
       "perspectiveIcon": "/services/web/resources/unicons/setting.svg",
       "perspectiveName": "Settings",
       "perspectiveOrder": "200",
+      "perspectiveRole": "",
       "title": "BookStatus",
       "tooltip": "BookStatus",
       "type": "SETTING",
