@@ -177,7 +177,7 @@ export class BookStatusRepository {
     }
 
     private async triggerEvent(data: BookStatusEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("dirigible-test-project/Settings/BookStatus", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("dirigible-test-project-Settings-BookStatus", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -185,6 +185,6 @@ export class BookStatusRepository {
                 console.error(error);
             }            
         });
-        producer.queue("dirigible-test-project/Settings/BookStatus").send(JSON.stringify(data));
+        producer.topic("dirigible-test-project/Settings/BookStatus").send(JSON.stringify(data));
     }
 }

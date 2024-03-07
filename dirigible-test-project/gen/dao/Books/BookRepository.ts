@@ -206,7 +206,7 @@ export class BookRepository {
     }
 
     private async triggerEvent(data: BookEntityEvent) {
-        const triggerExtensions = await extensions.loadExtensionModules("dirigible-test-project/Books/Book", ["trigger"]);
+        const triggerExtensions = await extensions.loadExtensionModules("dirigible-test-project-Books-Book", ["trigger"]);
         triggerExtensions.forEach(triggerExtension => {
             try {
                 triggerExtension.trigger(data);
@@ -214,6 +214,6 @@ export class BookRepository {
                 console.error(error);
             }            
         });
-        producer.queue("dirigible-test-project/Books/Book").send(JSON.stringify(data));
+        producer.topic("dirigible-test-project/Books/Book").send(JSON.stringify(data));
     }
 }

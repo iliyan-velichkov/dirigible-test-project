@@ -1,6 +1,9 @@
 import { Controller, Get, Post, Put, Delete, response } from "sdk/http"
+import { Extensions } from "sdk/extensions"
 import { BookRepository, BookEntityOptions } from "../../dao/Books/BookRepository";
 import { HttpUtils } from "../utils/HttpUtils";
+
+const validationModules = await Extensions.loadExtensionModules("dirigible-test-project-Books-Book", ["validate"]);
 
 @Controller
 class BookService {
@@ -24,6 +27,7 @@ class BookService {
     @Post("/")
     public create(entity: any) {
         try {
+            this.validateEntity(entity);
             entity.Id = this.repository.create(entity);
             response.setHeader("Content-Location", "/services/ts/dirigible-test-project/gen/api/Books/BookService.ts/" + entity.Id);
             response.setStatus(response.CREATED);
@@ -79,6 +83,7 @@ class BookService {
     public update(entity: any, ctx: any) {
         try {
             entity.Id = ctx.pathParameters.id;
+            this.validateEntity(entity);
             this.repository.update(entity);
             return entity;
         } catch (error: any) {
@@ -109,6 +114,24 @@ class BookService {
             HttpUtils.sendResponseBadRequest(error.message);
         } else {
             HttpUtils.sendInternalServerError(error.message);
+        }
+    }
+
+    private validateEntity(entity: any): void {
+        if (entity.Title === null || entity.Title === undefined) {
+            throw new ValidationError(`The 'Title' property is required, provide a valid value`);
+        }
+        if (entity.Title.length > 40) {
+            throw new ValidationError(`The 'Title' exceeds the maximum length of [40] characters`);
+        }
+        if (entity.Publisher === null || entity.Publisher === undefined) {
+            throw new ValidationError(`The 'Publisher' property is required, provide a valid value`);
+        }
+        if (entity.Publisher.length > 40) {
+            throw new ValidationError(`The 'Publisher' exceeds the maximum length of [40] characters`);
+        }
+        for (const next of validationModules) {
+            next.validate(entity);
         }
     }
 }
