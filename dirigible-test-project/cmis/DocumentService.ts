@@ -23,7 +23,6 @@ class DocumentService {
                 });
             }
 
-            console.log("Documents:" + JSON.stringify(documents));
             return documents;
         } catch (error: any) {
             this.handleError(error);
