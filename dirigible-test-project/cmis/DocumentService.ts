@@ -41,20 +41,19 @@ class DocumentService {
     }
 
     private createRandomFileName(): string {
-        return (Math.random() + 1).toString(36).substring(2);
+        return (Math.random() + 1).toString(36).substring(2) + ".txt";
     }
 
-    @Post("/documents/:documentName")
-    public create(_: any, ctx: any) {
+    @Post("/documents")
+    public create(entity: any) {
         try {
             const cmisSession = cmis.getSession();
             const rootFolder = cmisSession.getRootFolder();
 
-            const textFileName = ctx.pathParameters.documentName;
-            // const textFileName = this.createRandomFileName() + ".txt";
+            const textFileName = entity.documentName ? entity.documentName : this.createRandomFileName();
 
             const mimetype = "text/plain; charset=UTF-8";
-            const content = "This is some test content.";
+            const content = entity.content ? entity.content : "This is some test content.";
             const filename = textFileName;
 
             const outputStream = streams.createByteArrayOutputStream();
@@ -69,7 +68,7 @@ class DocumentService {
             properties[cmis.NAME] = filename;
             const newDocument = rootFolder.createDocument(properties, contentStream, cmis.VERSIONING_STATE_MAJOR);
 
-            return "Created document with id: " + newDocument.getId();
+            return "Created document with id [" + newDocument.getId() + "], name [" + newDocument.getName() + "] and path: " + newDocument.getPath();
         } catch (error: any) {
             this.handleError(error);
         }
