@@ -29,17 +29,6 @@ class DocumentService {
         }
     }
 
-    @Delete("/documents/:documentName")
-    public deleteById(_: any, ctx: any) {
-        try {
-            const documentName = ctx.pathParameters.documentName;
-
-            return "Not implemented deletion of " + documentName;
-        } catch (error: any) {
-            this.handleError(error);
-        }
-    }
-
     private createRandomFileName(): string {
         return (Math.random() + 1).toString(36).substring(2) + ".txt";
     }
@@ -73,6 +62,19 @@ class DocumentService {
             this.handleError(error);
         }
     }
+
+    @Delete("/documents/:documentName")
+    public deleteById(_: any, ctx: any) {
+        try {
+            const documentName = ctx.pathParameters.documentName;
+
+            return "Not implemented deletion of " + documentName;
+        } catch (error: any) {
+            this.handleError(error);
+        }
+    }
+
+
 
     private handleError(error: any) {
         DocumentService.sendInternalServerError(error.message);
