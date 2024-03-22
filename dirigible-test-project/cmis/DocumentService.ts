@@ -18,8 +18,11 @@ class DocumentService {
             for (let i in children) {
                 const doc = children[i];
                 documents.push({
-                    documentId: doc.getId(),
-                    documentName: doc.getName()
+                    id: doc.getId(),
+                    name: doc.getName(),
+                    "type": doc.getType().getId(),
+                    path: doc.getPath()
+
                 });
             }
 
