@@ -66,12 +66,14 @@ class DocumentService {
         }
     }
 
-    @Delete("/documents/:documentName")
+    @Delete("/documents/:id")
     public deleteById(_: any, ctx: any) {
         try {
-            const documentName = ctx.pathParameters.documentName;
-
-            return "Not implemented deletion of " + documentName;
+            const id = ctx.pathParameters.id;
+            const cmisSession = cmis.getSession();
+            const obj = cmisSession.getObjectByPath(id);
+            obj.delete();
+            return `Document with id [${id}] was deleted`;
         } catch (error: any) {
             this.handleError(error);
         }
@@ -79,8 +81,9 @@ class DocumentService {
 
 
 
-    private handleError(error: any) {
+    private handleError(error: Error) {
         DocumentService.sendInternalServerError(error.message);
+        throw error;
     }
 
     private static sendInternalServerError(message: string): void {
