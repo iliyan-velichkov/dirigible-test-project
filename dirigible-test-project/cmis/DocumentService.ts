@@ -6,6 +6,10 @@ import { response } from "sdk/http";
 @Controller
 class DocumentService {
 
+    private isDocument(doc: Document | Folder): boolean {
+        return doc.getType().getId() === 'cmis:document';
+    }
+
     @Get("/documents")
     public getAll(_: any, ctx: any) {
         try {
@@ -17,13 +21,15 @@ class DocumentService {
             const documents = [];
             for (let i in children) {
                 const doc = children[i];
-                documents.push({
-                    id: doc.getId(),
-                    name: doc.getName(),
-                    "type": doc.getType().getId(),
-                    path: doc.getPath()
+                if (this.isDocument(doc)) {
+                    documents.push({
+                        id: doc.getId(),
+                        name: doc.getName(),
+                        "type": doc.getType().getId(),
+                        path: doc.getPath()
 
-                });
+                    });
+                }
             }
 
             return documents;
@@ -37,7 +43,6 @@ class DocumentService {
         try {
             const id = ctx.pathParameters.id;
             const cmisSession = cmis.getSession();
-
             const doc: Document = cmisSession.getObjectByPath(id);
 
             const inputStream = doc.getContentStream()?.getStream();
@@ -99,8 +104,6 @@ class DocumentService {
             this.handleError(error);
         }
     }
-
-
 
     private handleError(error: Error) {
         DocumentService.sendInternalServerError(error.message);
