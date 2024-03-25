@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Delete } from "sdk/http"
-import { cmis } from "sdk/cms";
+import { cmis, Document } from "sdk/cms";
 import { streams } from "sdk/io";
 import { response } from "sdk/http";
 
@@ -27,6 +27,27 @@ class DocumentService {
             }
 
             return documents;
+        } catch (error: any) {
+            this.handleError(error);
+        }
+    }
+
+    @Get("/documents/:id")
+    public getById(_: any, ctx: any) {
+        try {
+            const id = ctx.pathParameters.id;
+            const cmisSession = cmis.getSession();
+
+            const doc: Document = cmisSession.getObjectByPath(id);
+
+            const inputStream = doc.getContentStream()?.getStream();
+            const outputStream = streams.createByteArrayOutputStream();
+            streams.copy(inputStream, outputStream);
+
+            const copiedBytes = outputStream.getBytes();
+            const documentContent = String.fromCharCode.apply(String, copiedBytes);
+
+            return documentContent;
         } catch (error: any) {
             this.handleError(error);
         }
