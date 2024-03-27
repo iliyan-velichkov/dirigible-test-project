@@ -1,8 +1,8 @@
 {
-  "brand": "codbex",
-  "brandUrl": "https://codbex.com",
-  "title": "Dirigible test project",
-  "description": "A simple Dirigible test project",
+  "brand": "dirigible",
+  "brandUrl": "https://github.com/eclipse/dirigible",
+  "title": "Dirigible Test Project",
+  "description": "Dirigible Test Project description",
   "tablePrefix": "",
   "projectName": "dirigible-test-project",
   "workspaceName": "workspace",
