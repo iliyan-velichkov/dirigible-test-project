@@ -1,5 +1,0 @@
-{
-    "module": "dirigible-test-project/gen/ui/Settings/BookStatus/dialog-filter/view.js",
-    "extensionPoint": "dirigible-test-project-dialog-window",
-    "description": "dirigible-test-project - Application Dialog Window"
-}

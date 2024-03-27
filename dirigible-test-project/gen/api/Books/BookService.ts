@@ -125,11 +125,11 @@ class BookService {
         if (entity.Title?.length > 40) {
             throw new ValidationError(`The 'Title' exceeds the maximum length of [40] characters`);
         }
-        if (entity.Publisher === null || entity.Publisher === undefined) {
-            throw new ValidationError(`The 'Publisher' property is required, provide a valid value`);
+        if (entity.Author === null || entity.Author === undefined) {
+            throw new ValidationError(`The 'Author' property is required, provide a valid value`);
         }
-        if (entity.Publisher?.length > 40) {
-            throw new ValidationError(`The 'Publisher' exceeds the maximum length of [40] characters`);
+        if (entity.Author?.length > 40) {
+            throw new ValidationError(`The 'Author' exceeds the maximum length of [40] characters`);
         }
         for (const next of validationModules) {
             next.validate(entity);

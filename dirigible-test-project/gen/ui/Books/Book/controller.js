@@ -81,7 +81,9 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 					messageHub.showAlertError("Book", `Unable to count Book: '${response.message}'`);
 					return;
 				}
-				$scope.dataCount = response.data;
+				if (response.data) {
+					$scope.dataCount = response.data;
+				}
 				$scope.dataPages = Math.ceil($scope.dataCount / $scope.dataLimit);
 				filter.$offset = ($scope.dataPage - 1) * $scope.dataLimit;
 				filter.$limit = $scope.dataLimit;
@@ -111,7 +113,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			messageHub.postMessage("entitySelected", {
 				entity: entity,
 				selectedMainEntityId: entity.Id,
-				optionsStatus: $scope.optionsStatus,
 			});
 		};
 
@@ -119,17 +120,13 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			$scope.selectedEntity = null;
 			$scope.action = "create";
 
-			messageHub.postMessage("createEntity", {
-				entity: {},
-				optionsStatus: $scope.optionsStatus,
-			});
+			messageHub.postMessage("createEntity");
 		};
 
 		$scope.updateEntity = function () {
 			$scope.action = "update";
 			messageHub.postMessage("updateEntity", {
 				entity: $scope.selectedEntity,
-				optionsStatus: $scope.optionsStatus,
 			});
 		};
 
@@ -166,31 +163,7 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 		$scope.openFilter = function (entity) {
 			messageHub.showDialogWindow("Book-filter", {
 				entity: $scope.filterEntity,
-				optionsStatus: $scope.optionsStatus,
 			});
 		};
-
-		//----------------Dropdowns-----------------//
-		$scope.optionsStatus = [];
-
-
-		$http.get("/services/ts/dirigible-test-project/gen/api/Settings/BookStatusService.ts").then(function (response) {
-			$scope.optionsStatus = response.data.map(e => {
-				return {
-					value: e.Id,
-					text: e.Name
-				}
-			});
-		});
-
-		$scope.optionsStatusValue = function (optionKey) {
-			for (let i = 0; i < $scope.optionsStatus.length; i++) {
-				if ($scope.optionsStatus[i].value === optionKey) {
-					return $scope.optionsStatus[i].text;
-				}
-			}
-			return null;
-		};
-		//----------------Dropdowns-----------------//
 
 	}]);

@@ -6,14 +6,12 @@ import { dao as daoApi } from "sdk/db";
 export interface BookEntity {
     readonly Id: number;
     Title: string;
-    Publisher: string;
-    Status?: number;
+    Author: string;
 }
 
 export interface BookCreateEntity {
     readonly Title: string;
-    readonly Publisher: string;
-    readonly Status?: number;
+    readonly Author: string;
 }
 
 export interface BookUpdateEntity extends BookCreateEntity {
@@ -25,44 +23,37 @@ export interface BookEntityOptions {
         equals?: {
             Id?: number | number[];
             Title?: string | string[];
-            Publisher?: string | string[];
-            Status?: number | number[];
+            Author?: string | string[];
         };
         notEquals?: {
             Id?: number | number[];
             Title?: string | string[];
-            Publisher?: string | string[];
-            Status?: number | number[];
+            Author?: string | string[];
         };
         contains?: {
             Id?: number;
             Title?: string;
-            Publisher?: string;
-            Status?: number;
+            Author?: string;
         };
         greaterThan?: {
             Id?: number;
             Title?: string;
-            Publisher?: string;
-            Status?: number;
+            Author?: string;
         };
         greaterThanOrEqual?: {
             Id?: number;
             Title?: string;
-            Publisher?: string;
-            Status?: number;
+            Author?: string;
         };
         lessThan?: {
             Id?: number;
             Title?: string;
-            Publisher?: string;
-            Status?: number;
+            Author?: string;
         };
         lessThanOrEqual?: {
             Id?: number;
             Title?: string;
-            Publisher?: string;
-            Status?: number;
+            Author?: string;
         };
     },
     $select?: (keyof BookEntity)[],
@@ -102,15 +93,10 @@ export class BookRepository {
                 required: true
             },
             {
-                name: "Publisher",
-                column: "BOOK_PUBLISHER",
+                name: "Author",
+                column: "BOOK_AUTHOR",
                 type: "VARCHAR",
                 required: true
-            },
-            {
-                name: "Status",
-                column: "BOOK_STATUS",
-                type: "INTEGER",
             }
         ]
     };
@@ -214,6 +200,6 @@ export class BookRepository {
                 console.error(error);
             }            
         });
-        producer.topic("dirigible-test-project/Books/Book").send(JSON.stringify(data));
+        producer.topic("dirigible-test-project-Books-Book").send(JSON.stringify(data));
     }
 }

@@ -29,14 +29,13 @@
                 <fd-form-group dg-header="Book Filter" name="entityForm" class="fd-container fd-form-layout-grid-container">
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idTitle" dg-required="true" dg-colon="true">Title</fd-form-label>
+                        	<fd-form-label for="idTitle" dg-colon="true">Title</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
 	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Title'].$valid }}">
 	                            <fd-input id="idTitle"
 	                                name="Title"
 	                                state="{{ forms.details['Title'].$valid ? '' : 'error' }}"
-									ng-required="true"
 	                                ng-model="entity.Title"
 	                                ng-minlength="0.0 || 0"
 	                                ng-maxlength="40.0 || -1"
@@ -49,37 +48,21 @@
                     </fd-form-item>
                     <fd-form-item class="fd-row">
                     	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idPublisher" dg-required="true" dg-colon="true">Publisher</fd-form-label>
+                        	<fd-form-label for="idAuthor" dg-colon="true">Author</fd-form-label>
                         </div>
                         <div class="fd-col fd-col-md--8">
-	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Publisher'].$valid }}">
-	                            <fd-input id="idPublisher"
-	                                name="Publisher"
-	                                state="{{ forms.details['Publisher'].$valid ? '' : 'error' }}"
-									ng-required="true"
-	                                ng-model="entity.Publisher"
+	                        <fd-form-input-message-group dg-inactive="{{ forms.details['Author'].$valid }}">
+	                            <fd-input id="idAuthor"
+	                                name="Author"
+	                                state="{{ forms.details['Author'].$valid ? '' : 'error' }}"
+	                                ng-model="entity.Author"
 	                                ng-minlength="0.0 || 0"
 	                                ng-maxlength="40.0 || -1"
 	                                type="text"
-	                                placeholder="Enter Publisher">
+	                                placeholder="Enter Author">
 	                            </fd-input>
 	                            <fd-form-message dg-type="error">Incorrect Input</fd-form-message>
 	                        </fd-form-input-message-group>
-	                    </div>
-                    </fd-form-item>
-                    <fd-form-item class="fd-row">
-                    	<div class="fd-col fd-col-md--2">
-                        	<fd-form-label for="idStatus" dg-required="false" dg-colon="true">Status</fd-form-label>
-                        </div>
-                        <div class="fd-col fd-col-md--8">
-	                        <fd-combobox-input id="idStatus"
-	                            name="Status"
-	                            state="{{ forms.details['Status'].$valid ? '' : 'error' }}"
-	                            ng-required="false"
-	                            ng-model="entity.Status"
-	                            dropdown-items="optionsStatus"
-	                            dg-placeholder="Search Status ...">
-	                        </fd-combobox-input>
 	                    </div>
                     </fd-form-item>
                 </fd-form-group>

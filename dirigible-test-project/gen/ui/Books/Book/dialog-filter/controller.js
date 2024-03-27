@@ -19,7 +19,6 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 				$scope.entity = params.entity ?? {};
 				$scope.selectedMainEntityKey = params.selectedMainEntityKey;
 				$scope.selectedMainEntityId = params.selectedMainEntityId;
-				$scope.optionsStatus = params.optionsStatus;
 			}
 		}
 
@@ -49,11 +48,8 @@ angular.module('page', ["ideUI", "ideView", "entityApi"])
 			if (entity.Title) {
 				filter.$filter.contains.Title = entity.Title;
 			}
-			if (entity.Publisher) {
-				filter.$filter.contains.Publisher = entity.Publisher;
-			}
-			if (entity.Status) {
-				filter.$filter.equals.Status = entity.Status;
+			if (entity.Author) {
+				filter.$filter.contains.Author = entity.Author;
 			}
 			messageHub.postMessage("entitySearch", {
 				entity: entity,
