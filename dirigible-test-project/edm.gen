@@ -8,6 +8,7 @@
   "workspaceName": "workspace",
   "filePath": "edm.model",
   "templateId": "template-application-angular/template/template.js",
+  "dataSource": "DefaultDB",
   "perspectives": {
     "Books": {
       "views": [
@@ -142,6 +143,7 @@
       "title": "Book",
       "tooltip": "Book",
       "type": "PRIMARY",
+      "dataSource": "DefaultDB",
       "referencedProjections": [],
       "primaryKeys": [
         "Id"
